@@ -80,13 +80,7 @@ public class placeOrder extends BaseTest {
 		return new Object[][] {{data.get(0)},{data.get(1)}};
 	}
 	
-	public String getScreenshot(String testCaseName) throws IOException {
-		TakesScreenshot ts = (TakesScreenshot)driver;
-		File source = ts.getScreenshotAs(OutputType.FILE);
-		File destination = new File(System.getProperty("user.dir")+"//reports//"+ testCaseName + ".png");
-		FileUtils.copyFile(source, destination);
-		return System.getProperty("user.dir")+"//reports//"+ testCaseName + ".png";
-	}
+	
 		
 	
 }

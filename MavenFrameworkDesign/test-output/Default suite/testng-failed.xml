@@ -8,6 +8,7 @@
           <include name="closeBrowser"/>
           <include name="placeOrder"/>
           <include name="landOnSite"/>
+          <include name="verifyOrderDetails"/>
         </methods>
       </class> <!-- MavenFrameworkDesign.tests.placeOrder -->
     </classes>
