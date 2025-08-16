@@ -6,9 +6,8 @@
       <class name="MavenFrameworkDesign.tests.placeOrder">
         <methods>
           <include name="closeBrowser"/>
-          <include name="placeOrder"/>
+          <include name="placeOrder" invocation-numbers="1"/>
           <include name="landOnSite"/>
-          <include name="verifyOrderDetails"/>
         </methods>
       </class> <!-- MavenFrameworkDesign.tests.placeOrder -->
     </classes>

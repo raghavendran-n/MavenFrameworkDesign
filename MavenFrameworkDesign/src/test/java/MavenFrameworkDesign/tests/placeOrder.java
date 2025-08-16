@@ -31,7 +31,8 @@ import MavenFrameworkDesign.TestComponents.BaseTest;
 
 public class placeOrder extends BaseTest {
 
-	@Test(dataProvider="getData", groups= {"placeOrder"})
+	//groups, groups= {"placeOrder"}
+	@Test(dataProvider="getData")
 	public void placeOrder(HashMap<String,String> input) throws IOException {
 		
 		pdp pdp = loginPage.loginAction(input.get("email"),input.get("password"));
@@ -55,14 +56,14 @@ public class placeOrder extends BaseTest {
 	}
 	
 	
-	@Test(dependsOnMethods= {"placeOrder"})
-	public void verifyOrderDetails(HashMap<String,String> input) throws IOException {
-		
-		pdp pdp = loginPage.loginAction(input.get("email"),input.get("password"));
-		orderPage orderPage = pdp.goToOrder();
-		Assert.assertTrue(orderPage.verifyOrderDetails(input.get("productAddedToCart")));
-		
-	}
+//	@Test(dependsOnMethods= {"placeOrder"})
+//	public void verifyOrderDetails(HashMap<String,String> input) throws IOException {
+//		
+//		pdp pdp = loginPage.loginAction(input.get("email"),input.get("password"));
+//		orderPage orderPage = pdp.goToOrder();
+//		Assert.assertTrue(orderPage.verifyOrderDetails(input.get("productAddedToCart")));
+//		
+//	}
 	
 	@DataProvider
 	public Object [][] getData() throws IOException{

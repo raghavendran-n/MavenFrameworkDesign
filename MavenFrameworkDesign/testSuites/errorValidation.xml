@@ -6,7 +6,8 @@
 </listeners>
   <test thread-count="1" name="OrderPlacementANDorderDetailValidation">
     <classes>
-      <class name="MavenFrameworkDesign.tests.placeOrder"/>
+      <class name="MavenFrameworkDesign.tests.ErrorValidation"/>
+      <class name="MavenFrameworkDesign.tests.ErrorValidationWrongValidation"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

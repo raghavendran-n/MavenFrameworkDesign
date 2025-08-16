@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -21,6 +23,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import MavenFrameworkDesign.PageObjects.loginPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	
@@ -33,11 +36,19 @@ public class BaseTest {
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/MavenFrameworkDesign/resources/GlobalData.properties");
 		prop.load(fis);
-		String browsername = prop.getProperty("browser");
 		
-		if (browsername.equalsIgnoreCase("chrome")) {
+		String browsername = System.getProperty("browser")!=null ? System.getProperty("browser") : prop.getProperty("browser");
+		//String browsername = prop.getProperty("browser");
+		
+		if (browsername.contains("chrome")) {
 			
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			WebDriverManager.chromedriver().setup();
+			if(browsername.contains("headless")) {
+				options.addArguments("headless");
+			}
+			driver = new ChromeDriver(options);
+			driver.manage().window().setSize(new Dimension(1440, 900));
 		}
 		
 		driver.manage().window().maximize();
